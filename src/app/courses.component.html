@@ -1,0 +1,12 @@
+<!-->{{this.getTitle()}}<-->
+<!-->
+<ul>
+    <li *ngFor='let c of courses'>{{c}}</li>
+</ul>
+<-->
+
+<div (click)="test($event)">
+    <button class="btn" [class.active]="isActive" [style.margin]="margin" [style.margin]="margin"
+        [style.background]="isActive ? 'blue': 'red'" (click)="click($event)"> ok </button>
+    <input #data class="btn btn-warning" [value]="title" type="text" (keyup.enter)="key($event,data)">
+</div>
