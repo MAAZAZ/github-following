@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Learn-Angular';
+  title = 'My Application';
+  post={
+    'title':'google',
+    'isFavorid': true
+  }
+
+  receiveMessage(event){
+    console.log("hello world");
+    this.title=event.title;
+  }
+
 }
