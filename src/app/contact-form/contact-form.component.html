@@ -1,0 +1,57 @@
+<form #form="ngForm" (ngSubmit)="f(form)">
+    <div class="form-group">
+    <div ngModelGroup="name">
+            <label for="firstName" class="col-sm-2">Firstname</label>
+            <input [style.background]="firstname.errors? 'white':'#19FA46'" required minlength="2" maxlength="20" pattern="[a-zA-Z]+" ngModel name="firstname" #firstname="ngModel" (change)="do(firstname)" id="firstName" type="text" class="form-control">
+            <div class="alert alert-danger" *ngIf="firstname.touched && !firstname.valid">
+                <div *ngIf="firstname.errors.required">Required</div>
+                <div *ngIf="firstname.errors.minlength">More than 2 caracters</div>
+                <div *ngIf="firstname.errors.pattern">Only alphabetic's caracters</div>
+            </div>
+
+        <div class="form-group">
+            <label for="lastName" class="col-sm-2">Lastname</label>
+            <input required ngModel name="lastname" #lastname="ngModel" id="lastName" type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="sexe" class="col-sm-2 col-form-label">Sexe</label>
+        <select multiple ngModel name="sexe" class="form-control">
+            <option value=""></option>
+            <option *ngFor="let c of sexe" [ngValue]="c">{{c.name}}</option>
+        </select>
+    </div>
+
+    <div class="radio">
+        <label class="col-sm-2 col-form-label" for="sexe2" *ngFor="let c of sexe">
+            <input type="radio" ngModel name="sexe2" class="form-control" [value]="c.id">
+            {{c.name}}
+        </label>
+    </div>
+
+        <div class="form-group">
+            <label for="comment" class="col-sm-2 col-form-label">Comment</label>
+            <textarea ngModel name="comment" #comment="ngModel" id="comment" cols="30" rows="10" class="form-control"></textarea>
+        </div>
+    </div>
+
+    <div class="checkbox">
+        <label><input ngModel name="check" #check="ngModel" class="form-control" type="checkbox">follow</label>
+    </div>
+
+    <button class="btn btn-success" [disabled]="!form.valid" type="submit">Add</button>
+
+</form>
+
+<p>
+{{frstname}}
+{{lstname}}
+{{commentaire}}
+<br>
+{{form.value | json}}
+<br>
+{{form.value.firstname}}
+{{form.value.lastname}}
+{{form.value.comment}}
+</p>

@@ -1,0 +1,36 @@
+<br><br><br><br>
+
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let item of posts">
+        <h3>{{item.title}}</h3>
+        <p>{{item.body}}</p>
+        <small>id : {{item.id}}</small>
+        <br>
+        <small>User id : {{item.userId}}</small>
+        <div align="right" class="container">
+            <button (click)="edit(item)" class="btn btn-info">Edit</button> &nbsp;
+            <button (click)="delete(item)" class="btn btn-warning">Delete</button>
+        </div>
+    </li>
+</ul>
+
+<br><br><br><br>
+
+
+<form #f="ngForm">
+    <legend>Form</legend>
+
+    <div class="form-group">
+        <label>Title</label>
+        <input name="title" [(ngModel)]="post.title" [value]="post.title" type="text" class="form-control" placeholder="Input field">
+    </div>
+
+    <div class="form-group">
+        <label>Body</label>
+        <input name="body" [(ngModel)]="post.body" [value]="post.body" type="text" class="form-control" placeholder="Input field">
+    </div>
+    <button (click)="add(f)" class="btn btn-primary" *ngIf="status">Add</button>
+    <button (click)="update()" class="btn btn-success" *ngIf="!status">Update</button>
+</form>
+
+<p>{{ post | json }}</p>

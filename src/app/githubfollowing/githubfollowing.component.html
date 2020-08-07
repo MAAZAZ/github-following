@@ -1,0 +1,14 @@
+<div class="container list-group">
+    <div class="row my-4" *ngFor="let c of comptes">
+        <div class="list-group-item col-4">
+            <img src="{{c.avatar_url}}" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+        </div>
+        <div class="list-group-item col-4">
+            <p class="h3 text-center">{{c.login}}</p>
+        </div>
+        <div class="list-group-item col-4">
+            <p class="h4">His Github's link is :</p>
+            <a [routerLink]="['/github/', c.login]" [queryParams]="{page: 1, type: c.type, var: 5}">{{c.html_url}}</a>
+        </div>
+</div>
+</div>
